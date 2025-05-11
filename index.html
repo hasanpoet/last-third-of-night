@@ -10,7 +10,7 @@
     </style>
 </head>
 <body>
-    <h1>Calculate Last Third of the Night</h1>
+    <h1>Calculate Last Third of the Night (Starting of Tahajjud Time)</h1>
     <button onclick="getPrayerTimes()">Get My Times</button>
     <div id="output"></div>
 
@@ -55,9 +55,9 @@
                 const lastThirdStart = new Date(fajr - thirdMs);
 
                 output.innerHTML = `
-                    <p><strong>Location:</strong> ${locationName}</p>
-                    <p><strong>Maghrib:</strong> ${maghrib.toLocaleTimeString()}</p>
-                    <p><strong>Fajr:</strong> ${fajr.toLocaleTimeString()}</p>
+                    <p><strong>My Location:</strong> ${locationName}</p>
+                    <p><strong>Maghrib Starts:</strong> ${maghrib.toLocaleTimeString()}</p>
+                    <p><strong>Fajr Starts:</strong> ${fajr.toLocaleTimeString()}</p>
                     <p><strong>Last Third (Tahajjud Time) Starts:</strong> ${lastThirdStart.toLocaleTimeString()}</p>
                 `;
             }, () => {
