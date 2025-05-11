@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Last Third of the Night</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        body { font-family: sans-serif; max-width: 600px; margin: auto; padding: 20px; }
+        h1 { color: #2c3e50; }
+        #output { margin-top: 20px; font-size: 1.2em; }
+    </style>
+</head>
+<body>
+    <h1>Calculate Last Third of the Night</h1>
+    <button onclick="getPrayerTimes()">Get My Times</button>
+    <div id="output"></div>
+
+    <script>
+        async function getPrayerTimes() {
+            const output = document.getElementById("output");
+            output.innerHTML = "Getting location...";
+
+            if (!navigator.geolocation) {
+                output.innerHTML = "Geolocation is not supported by your browser.";
+                return;
+            }
+
+            navigator.geolocation.getCurrentPosition(async (position) => {
+                const lat = position.coords.latitude;
+                const lon = position.coords.longitude;
+
+                output.innerHTML = "Fetching prayer times...";
+
+                const res = await fetch(`https://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lon}&method=2`);
+                const data = await res.json();
+
+                const timings = data.data.timings;
+                const maghribStr = timings.Maghrib;
+                const fajrStr = timings.Fajr;
+
+                // Convert to Date objects
+                const now = new Date();
+                const maghrib = new Date(now.toDateString() + ' ' + maghribStr);
+                let fajr = new Date(now.toDateString() + ' ' + fajrStr);
+                if (fajr <= maghrib) fajr.setDate(fajr.getDate() + 1);  // next day
+
+                const durationMs = fajr - maghrib;
+                const thirdMs = durationMs / 3;
+                const lastThirdStart = new Date(fajr - thirdMs);
+
+                output.innerHTML = `
+                    <p><strong>Maghrib:</strong> ${maghrib.toLocaleTimeString()}</p>
+                    <p><strong>Fajr:</strong> ${fajr.toLocaleTimeString()}</p>
+                    <p><strong>Last Third Starts:</strong> ${lastThirdStart.toLocaleTimeString()}</p>
+                `;
+            }, () => {
+                output.innerHTML = "Unable to get your location.";
+            });
+        }
+    </script>
+</body>
+</html>
