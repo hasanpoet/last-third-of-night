@@ -37,6 +37,13 @@
                 const maghribStr = timings.Maghrib;
                 const fajrStr = timings.Fajr;
 
+                const geoRes = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`);
+                const geoData = await geoRes.json();
+                const city = geoData.address.city || geoData.address.town || geoData.address.village;
+                const country = geoData.address.country;
+                const locationName = `${city}, ${country}`;
+
+
                 // Convert to Date objects
                 const now = new Date();
                 const maghrib = new Date(now.toDateString() + ' ' + maghribStr);
@@ -48,9 +55,10 @@
                 const lastThirdStart = new Date(fajr - thirdMs);
 
                 output.innerHTML = `
+                    <p><strong>Location:</strong> ${locationName}</p>
                     <p><strong>Maghrib:</strong> ${maghrib.toLocaleTimeString()}</p>
                     <p><strong>Fajr:</strong> ${fajr.toLocaleTimeString()}</p>
-                    <p><strong>Last Third Starts:</strong> ${lastThirdStart.toLocaleTimeString()}</p>
+                    <p><strong>Last Third (Tahajjud Time) Starts:</strong> ${lastThirdStart.toLocaleTimeString()}</p>
                 `;
             }, () => {
                 output.innerHTML = "Unable to get your location.";
