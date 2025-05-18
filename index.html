@@ -41,7 +41,31 @@
         .center {
             text-align: center;
         }
+        .flex-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .box {
+            flex: 1;
+            min-width: 280px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
     </style>
+    
 </head>
 
 <body>
@@ -122,39 +146,28 @@
                 const formattedTimes = formatPrayerTimesToAMPM(timings);
 
                 output.innerHTML = `
-                    <p><strong>My Location:</strong> ${locationName}</p>
-                    <p><strong>Maghrib Starts:</strong> ${maghrib.toLocaleTimeString()}</p>
-                    <p><strong>Fajr Starts:</strong> ${fajr.toLocaleTimeString()}</p>
-                    <p><strong>Last Third (Tahajjud Time) Starts:</strong> ${lastThirdStart.toLocaleTimeString()}</p>
-                    
-                    <h3>5 Daily Prayer Times</h3>
-                    <table style="width:100%; border-collapse: collapse; margin-top: 10px;">
-                        <tr>
-                            <th style="border: 1px solid #ccc; padding: 8px;">Prayer</th>
-                            <th style="border: 1px solid #ccc; padding: 8px;">Time</th>
-                        </tr>
-                        <tr>
-                            <td style="border: 1px solid #ccc; padding: 8px;">Fajr</td>
-                            <td style="border: 1px solid #ccc; padding: 8px;">${formattedTimes.Fajr}</td>
-                        </tr>
-                        <tr>
-                            <td style="border: 1px solid #ccc; padding: 8px;">Dhuhr</td>
-                            <td style="border: 1px solid #ccc; padding: 8px;">${formattedTimes.Dhuhr}</td>
-                        </tr>
-                        <tr>
-                            <td style="border: 1px solid #ccc; padding: 8px;">Asr</td>
-                            <td style="border: 1px solid #ccc; padding: 8px;">${formattedTimes.Asr}</td>
-                        </tr>
-                        <tr>
-                            <td style="border: 1px solid #ccc; padding: 8px;">Maghrib</td>
-                            <td style="border: 1px solid #ccc; padding: 8px;">${formattedTimes.Maghrib}</td>
-                        </tr>
-                        <tr>
-                            <td style="border: 1px solid #ccc; padding: 8px;">Isha</td>
-                            <td style="border: 1px solid #ccc; padding: 8px;">${formattedTimes.Isha}</td>
-                        </tr>
-                    </table>
-                `;
+                <p><strong>My Location:</strong> ${locationName}</p>
+            
+                <div class="flex-wrapper">
+                    <div class="box">
+                        <p><strong>Maghrib Starts:</strong> ${maghrib.toLocaleTimeString()}</p>
+                        <p><strong>Fajr Starts:</strong> ${fajr.toLocaleTimeString()}</p>
+                        <p><strong>Last Third (Tahajjud Time) Starts:</strong> ${lastThirdStart.toLocaleTimeString()}</p>
+                    </div>
+            
+                    <div class="box">
+                        <h3>🕋 5 Daily Prayer Times</h3>
+                        <table>
+                            <tr><th>Prayer</th><th>Time</th></tr>
+                            <tr><td>Fajr</td><td>${formattedTimes.Fajr}</td></tr>
+                            <tr><td>Dhuhr</td><td>${formattedTimes.Dhuhr}</td></tr>
+                            <tr><td>Asr</td><td>${formattedTimes.Asr}</td></tr>
+                            <tr><td>Maghrib</td><td>${formattedTimes.Maghrib}</td></tr>
+                            <tr><td>Isha</td><td>${formattedTimes.Isha}</td></tr>
+                        </table>
+                    </div>
+                </div>
+            `;
             }, () => {
                 output.innerHTML = "Unable to get your location.";
             });
