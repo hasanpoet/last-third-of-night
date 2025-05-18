@@ -12,7 +12,7 @@
       </script>
     <!-- Block for Google Analytics: End -->
 
-    <title>Last Third of the Night</title>
+    <title>Last Third of the Night - Tahajjud Time</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
         body {
@@ -106,6 +106,34 @@
                     <p><strong>Maghrib Starts:</strong> ${maghrib.toLocaleTimeString()}</p>
                     <p><strong>Fajr Starts:</strong> ${fajr.toLocaleTimeString()}</p>
                     <p><strong>Last Third (Tahajjud Time) Starts:</strong> ${lastThirdStart.toLocaleTimeString()}</p>
+                    <hr />
+                    <h3>5 Daily Prayer Times</h3>
+                    <table style="width:100%; border-collapse: collapse; margin-top: 10px;">
+                        <tr>
+                            <th style="border: 1px solid #ccc; padding: 8px;">Prayer</th>
+                            <th style="border: 1px solid #ccc; padding: 8px;">Time</th>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ccc; padding: 8px;">Fajr</td>
+                            <td style="border: 1px solid #ccc; padding: 8px;">${timings.Fajr}</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ccc; padding: 8px;">Dhuhr</td>
+                            <td style="border: 1px solid #ccc; padding: 8px;">${timings.Dhuhr}</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ccc; padding: 8px;">Asr</td>
+                            <td style="border: 1px solid #ccc; padding: 8px;">${timings.Asr}</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ccc; padding: 8px;">Maghrib</td>
+                            <td style="border: 1px solid #ccc; padding: 8px;">${timings.Maghrib}</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ccc; padding: 8px;">Isha</td>
+                            <td style="border: 1px solid #ccc; padding: 8px;">${timings.Isha}</td>
+                        </tr>
+                    </table>
                 `;
             }, () => {
                 output.innerHTML = "Unable to get your location.";
