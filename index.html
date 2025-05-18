@@ -82,4 +82,35 @@
                 const res = await fetch(`https://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lon}&method=2`);
                 const data = await res.json();
 
-                c
+                const timings = data.data.timings;
+                const maghribStr = timings.Maghrib;
+                const fajrStr = timings.Fajr;
+
+                const geoRes = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`);
+                const geoData = await geoRes.json();
+                const city = geoData.address.city || geoData.address.town || geoData.address.village;
+                const country = geoData.address.country;
+                const locationName = `${city}, ${country}`;
+
+                const now = new Date();
+                const maghrib = new Date(now.toDateString() + ' ' + maghribStr);
+                let fajr = new Date(now.toDateString() + ' ' + fajrStr);
+                if (fajr <= maghrib) fajr.setDate(fajr.getDate() + 1);  // next day
+
+                const durationMs = fajr - maghrib;
+                const thirdMs = durationMs / 3;
+                const lastThirdStart = new Date(fajr - thirdMs);
+
+                output.innerHTML = `
+                    <p><strong>My Location:</strong> ${locationName}</p>
+                    <p><strong>Maghrib Starts:</strong> ${maghrib.toLocaleTimeString()}</p>
+                    <p><strong>Fajr Starts:</strong> ${fajr.toLocaleTimeString()}</p>
+                    <p><strong>Last Third (Tahajjud Time) Starts:</strong> ${lastThirdStart.toLocaleTimeString()}</p>
+                `;
+            }, () => {
+                output.innerHTML = "Unable to get your location.";
+            });
+        }
+    </script>
+</body>
+</html>
