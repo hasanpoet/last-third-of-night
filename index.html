@@ -147,17 +147,17 @@
                 const formattedTimes = formatPrayerTimesToAMPM(timings);
 
                 output.innerHTML = `
-                <p><strong>My Location:</strong> ${locationName}</p>
-            
+                
                 <div class="flex-wrapper">
                     <div class="box">
+                        <p><strong>My Location:</strong> ${locationName}</p>
                         <p><strong>Maghrib Starts:</strong> ${maghrib.toLocaleTimeString()}</p>
                         <p><strong>Fajr Starts:</strong> ${fajr.toLocaleTimeString()}</p>
                         <p><strong>Last Third (Tahajjud Time) Starts:</strong> ${lastThirdStart.toLocaleTimeString()}</p>
                     </div>
             
                     <div class="box">
-                        <h3>🕋 5 Daily Prayer Times</h3>
+                        <h3>My Daily Prayer Times</h3>
                         <table>
                             <tr><th>Prayer</th><th>Time</th></tr>
                             <tr><td>Fajr</td><td>${formattedTimes.Fajr}</td></tr>
