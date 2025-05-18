@@ -106,7 +106,7 @@
                     <p><strong>Maghrib Starts:</strong> ${maghrib.toLocaleTimeString()}</p>
                     <p><strong>Fajr Starts:</strong> ${fajr.toLocaleTimeString()}</p>
                     <p><strong>Last Third (Tahajjud Time) Starts:</strong> ${lastThirdStart.toLocaleTimeString()}</p>
-                    <hr />
+                    
                     <h3>5 Daily Prayer Times</h3>
                     <table style="width:100%; border-collapse: collapse; margin-top: 10px;">
                         <tr>
@@ -115,23 +115,23 @@
                         </tr>
                         <tr>
                             <td style="border: 1px solid #ccc; padding: 8px;">Fajr</td>
-                            <td style="border: 1px solid #ccc; padding: 8px;">${timings.Fajr}</td>
+                            <td style="border: 1px solid #ccc; padding: 8px;">${timings.Fajr.toLocaleTimeString()}</td>
                         </tr>
                         <tr>
                             <td style="border: 1px solid #ccc; padding: 8px;">Dhuhr</td>
-                            <td style="border: 1px solid #ccc; padding: 8px;">${timings.Dhuhr}</td>
+                            <td style="border: 1px solid #ccc; padding: 8px;">${timings.Dhuhr.toLocaleTimeString()}</td>
                         </tr>
                         <tr>
                             <td style="border: 1px solid #ccc; padding: 8px;">Asr</td>
-                            <td style="border: 1px solid #ccc; padding: 8px;">${timings.Asr}</td>
+                            <td style="border: 1px solid #ccc; padding: 8px;">${timings.Asr.toLocaleTimeString()}</td>
                         </tr>
                         <tr>
                             <td style="border: 1px solid #ccc; padding: 8px;">Maghrib</td>
-                            <td style="border: 1px solid #ccc; padding: 8px;">${timings.Maghrib}</td>
+                            <td style="border: 1px solid #ccc; padding: 8px;">${timings.Maghrib.toLocaleTimeString()}</td>
                         </tr>
                         <tr>
                             <td style="border: 1px solid #ccc; padding: 8px;">Isha</td>
-                            <td style="border: 1px solid #ccc; padding: 8px;">${timings.Isha}</td>
+                            <td style="border: 1px solid #ccc; padding: 8px;">${timings.Isha.toLocaleTimeString()}</td>
                         </tr>
                     </table>
                 `;
