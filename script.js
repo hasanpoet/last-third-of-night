@@ -53,11 +53,16 @@ async function getPrayerTimes() {
             <div class="box">
                 <p><strong>My Location:</strong> ${locationName}</p>
                 <p><strong>Last Third of Night Starts:</strong> ${lastThirdStart.toLocaleTimeString()}</p>
+				<p>
+					<div class="arabic-verse">
+						وَمِنَ ٱلَّيْلِ فَتَهَجَّدْ بِهِۦ نَافِلَةًۭ لَّكَ عَسَىٰٓ أَن يَبْعَثَكَ رَبُّكَ مَقَامًۭا مَّحْمُودًۭا &#x06DD;
+					</div>
+				</p>
             </div>
             <div class="box">
                 <h3>My Daily Prayer Times</h3>
                 <table>
-                    <tr><th>Prayer</th><th>Time (Waqt) Starts</th></tr>
+                    <tr><th>Prayer</th><th>Time (Waqt Begins)</th></tr>
                     <tr><td>Fajr</td><td>${formattedTimes.Fajr}</td></tr>
                     <tr><td>Dhuhr</td><td>${formattedTimes.Dhuhr}</td></tr>
                     <tr><td>Asr</td><td>${formattedTimes.Asr}</td></tr>
