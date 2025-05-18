@@ -1,28 +1,67 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7XH44SBB5G"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'G-7XH44SBB5G');
-    </script>
-    
+    <!-- Block for Google Analytics: Start -->
+      <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-7XH44SBB5G"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-7XH44SBB5G');
+      </script>
+    <!-- Block for Google Analytics: End -->
+
     <title>Last Third of the Night</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
-        body { font-family: sans-serif; max-width: 600px; margin: auto; padding: 20px; }
-        h1 { color: #2c3e50; }
-        #output { margin-top: 20px; font-size: 1.2em; }
+        body {
+            font-family: sans-serif;
+            max-width: 700px;
+            margin: auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        #output {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+        .section {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ccc;
+        }
+        .donate-text {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        .center {
+            text-align: center;
+        }
     </style>
 </head>
+
 <body>
     <h1>Calculate Last Third of the Night (Starting of Tahajjud Time)</h1>
     <button onclick="getPrayerTimes()">Get My Times</button>
     <div id="output"></div>
+
+    <div class="section center">
+        <p class="donate-text">Please buy me a coffee to help me continue this coffee-time project and share more useful tools in the future.</p>
+        <form action="https://www.paypal.com/donate" method="post" target="_top">
+            <input type="hidden" name="business" value="FZX25N6JE86A2" />
+            <input type="hidden" name="no_recurring" value="0" />
+            <input type="hidden" name="item_name" value="Please buy me a coffee to help me continue this coffee time project to give you more useful information in future." />
+            <input type="hidden" name="currency_code" value="CAD" />
+            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"
+                   border="0" name="submit" title="Donate with PayPal"
+                   alt="Donate with PayPal button" />
+            <img alt="" border="0" src="https://www.paypal.com/en_CA/i/scr/pixel.gif" width="1" height="1" />
+        </form>
+    </div>
 
     <script>
         async function getPrayerTimes() {
@@ -43,46 +82,4 @@
                 const res = await fetch(`https://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lon}&method=2`);
                 const data = await res.json();
 
-                const timings = data.data.timings;
-                const maghribStr = timings.Maghrib;
-                const fajrStr = timings.Fajr;
-
-                const geoRes = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`);
-                const geoData = await geoRes.json();
-                const city = geoData.address.city || geoData.address.town || geoData.address.village;
-                const country = geoData.address.country;
-                const locationName = `${city}, ${country}`;
-
-
-                // Convert to Date objects
-                const now = new Date();
-                const maghrib = new Date(now.toDateString() + ' ' + maghribStr);
-                let fajr = new Date(now.toDateString() + ' ' + fajrStr);
-                if (fajr <= maghrib) fajr.setDate(fajr.getDate() + 1);  // next day
-
-                const durationMs = fajr - maghrib;
-                const thirdMs = durationMs / 3;
-                const lastThirdStart = new Date(fajr - thirdMs);
-
-                output.innerHTML = `
-                    <p><strong>My Location:</strong> ${locationName}</p>
-                    <p><strong>Maghrib Starts:</strong> ${maghrib.toLocaleTimeString()}</p>
-                    <p><strong>Fajr Starts:</strong> ${fajr.toLocaleTimeString()}</p>
-                    <p><strong>Last Third (Tahajjud Time) Starts:</strong> ${lastThirdStart.toLocaleTimeString()}</p>
-                `;
-            }, () => {
-                output.innerHTML = "Unable to get your location.";
-            });
-        }
-    </script>
-    <form action="https://www.paypal.com/donate" method="post" target="_top">
-        <input type="hidden" name="business" value="FZX25N6JE86A2" />
-        <input type="hidden" name="no_recurring" value="0" />
-        <input type="hidden" name="item_name" value="Please buy me a coffee to help me continue this coffee time project to give you more useful information in future." />
-        <input type="hidden" name="currency_code" value="CAD" />
-        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-        <img alt="" border="0" src="https://www.paypal.com/en_CA/i/scr/pixel.gif" width="1" height="1" />
-    </form>
-
-</body>
-</html>
+                c
