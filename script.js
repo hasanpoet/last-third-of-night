@@ -35,7 +35,7 @@ async function getPrayerTimes() {
         const geoData = await geoRes.json();
         const city = geoData.address.city || geoData.address.town || geoData.address.village;
         const country = geoData.address.country;
-        const locationName = \`\${city}, \${country}\`;
+        const locationName = `${city}, ${country}`;
 
         const now = new Date();
         const maghrib = new Date(now.toDateString() + ' ' + maghribStr);
@@ -48,27 +48,27 @@ async function getPrayerTimes() {
 
         const formattedTimes = formatPrayerTimesToAMPM(timings);
 
-        output.innerHTML = \`
+        output.innerHTML = `
         <div class="flex-wrapper">
             <div class="box">
-                <p><strong>My Location:</strong> \${locationName}</p>
-                <p><strong>Maghrib Starts:</strong> \${maghrib.toLocaleTimeString()}</p>
-                <p><strong>Fajr Starts:</strong> \${fajr.toLocaleTimeString()}</p>
-                <p><strong>Last Third (Tahajjud Time) Starts:</strong> \${lastThirdStart.toLocaleTimeString()}</p>
+                <p><strong>My Location:</strong> ${locationName}</p>
+                <p><strong>Maghrib Starts:</strong> ${maghrib.toLocaleTimeString()}</p>
+                <p><strong>Fajr Starts:</strong> ${fajr.toLocaleTimeString()}</p>
+                <p><strong>Last Third (Tahajjud Time) Starts:</strong> ${lastThirdStart.toLocaleTimeString()}</p>
             </div>
             <div class="box">
                 <h3>My Daily Prayer Times</h3>
                 <table>
                     <tr><th>Prayer</th><th>Time</th></tr>
-                    <tr><td>Fajr</td><td>\${formattedTimes.Fajr}</td></tr>
-                    <tr><td>Dhuhr</td><td>\${formattedTimes.Dhuhr}</td></tr>
-                    <tr><td>Asr</td><td>\${formattedTimes.Asr}</td></tr>
-                    <tr><td>Maghrib</td><td>\${formattedTimes.Maghrib}</td></tr>
-                    <tr><td>Isha</td><td>\${formattedTimes.Isha}</td></tr>
+                    <tr><td>Fajr</td><td>${formattedTimes.Fajr}</td></tr>
+                    <tr><td>Dhuhr</td><td>${formattedTimes.Dhuhr}</td></tr>
+                    <tr><td>Asr</td><td>${formattedTimes.Asr}</td></tr>
+                    <tr><td>Maghrib</td><td>${formattedTimes.Maghrib}</td></tr>
+                    <tr><td>Isha</td><td>${formattedTimes.Isha}</td></tr>
                 </table>
             </div>
         </div>
-        \`;
+        `;
     }, () => {
         output.innerHTML = "Unable to get your location.";
     });
