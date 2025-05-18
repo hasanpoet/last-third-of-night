@@ -1,0 +1,47 @@
+body {
+    font-family: sans-serif;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    line-height: 1.6;
+}
+h1 {
+    color: #2c3e50;
+    font-size: 1.5em;
+}
+#output {
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+.section {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #ccc;
+}
+.donate-text {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+.center {
+    text-align: center;
+}
+.flex-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 20px;
+}
+.box {
+    flex: 1;
+    min-width: 280px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
