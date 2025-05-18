@@ -52,14 +52,12 @@ async function getPrayerTimes() {
         <div class="flex-wrapper">
             <div class="box">
                 <p><strong>My Location:</strong> ${locationName}</p>
-                <p><strong>Maghrib Starts:</strong> ${maghrib.toLocaleTimeString()}</p>
-                <p><strong>Fajr Starts:</strong> ${fajr.toLocaleTimeString()}</p>
                 <p><strong>Last Third (Tahajjud Time) Starts:</strong> ${lastThirdStart.toLocaleTimeString()}</p>
             </div>
             <div class="box">
                 <h3>My Daily Prayer Times</h3>
                 <table>
-                    <tr><th>Prayer</th><th>Time</th></tr>
+                    <tr><th>Prayer</th><th>Time (Waqt) Starts</th></tr>
                     <tr><td>Fajr</td><td>${formattedTimes.Fajr}</td></tr>
                     <tr><td>Dhuhr</td><td>${formattedTimes.Dhuhr}</td></tr>
                     <tr><td>Asr</td><td>${formattedTimes.Asr}</td></tr>
