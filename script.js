@@ -52,7 +52,7 @@ async function getPrayerTimes() {
         <div class="flex-wrapper">
             <div class="box">
                 <p><strong>My Location:</strong> ${locationName}</p>
-                <p><strong>Last Third (Tahajjud Time) Starts:</strong> ${lastThirdStart.toLocaleTimeString()}</p>
+                <p><strong>Last Third of Night Starts:</strong> ${lastThirdStart.toLocaleTimeString()}</p>
             </div>
             <div class="box">
                 <h3>My Daily Prayer Times</h3>
