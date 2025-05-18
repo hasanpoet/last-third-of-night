@@ -64,6 +64,24 @@
     </div>
 
     <script>
+        function formatPrayerTimesToAMPM(timings) {
+            const todayStr = new Date().toDateString();
+
+            const format = (timeStr) =>
+                new Date(todayStr + ' ' + timeStr).toLocaleTimeString([], {
+                    hour: 'numeric',
+                    minute: '2-digit'
+                });
+
+            return {
+                Fajr: format(timings.Fajr),
+                Dhuhr: format(timings.Dhuhr),
+                Asr: format(timings.Asr),
+                Maghrib: format(timings.Maghrib),
+                Isha: format(timings.Isha)
+            };
+        }
+
         async function getPrayerTimes() {
             const output = document.getElementById("output");
             output.innerHTML = "Getting location...";
@@ -101,6 +119,8 @@
                 const thirdMs = durationMs / 3;
                 const lastThirdStart = new Date(fajr - thirdMs);
 
+                const formattedTimes = formatPrayerTimesToAMPM(timings);
+
                 output.innerHTML = `
                     <p><strong>My Location:</strong> ${locationName}</p>
                     <p><strong>Maghrib Starts:</strong> ${maghrib.toLocaleTimeString()}</p>
@@ -115,23 +135,23 @@
                         </tr>
                         <tr>
                             <td style="border: 1px solid #ccc; padding: 8px;">Fajr</td>
-                            <td style="border: 1px solid #ccc; padding: 8px;">${timings.Fajr.toLocaleTimeString()}</td>
+                            <td style="border: 1px solid #ccc; padding: 8px;">${formattedTimes.Fajr}</td>
                         </tr>
                         <tr>
                             <td style="border: 1px solid #ccc; padding: 8px;">Dhuhr</td>
-                            <td style="border: 1px solid #ccc; padding: 8px;">${timings.Dhuhr.toLocaleTimeString()}</td>
+                            <td style="border: 1px solid #ccc; padding: 8px;">${formattedTimes.Dhuhr}</td>
                         </tr>
                         <tr>
                             <td style="border: 1px solid #ccc; padding: 8px;">Asr</td>
-                            <td style="border: 1px solid #ccc; padding: 8px;">${timings.Asr.toLocaleTimeString()}</td>
+                            <td style="border: 1px solid #ccc; padding: 8px;">${formattedTimes.Asr}</td>
                         </tr>
                         <tr>
                             <td style="border: 1px solid #ccc; padding: 8px;">Maghrib</td>
-                            <td style="border: 1px solid #ccc; padding: 8px;">${timings.Maghrib.toLocaleTimeString()}</td>
+                            <td style="border: 1px solid #ccc; padding: 8px;">${formattedTimes.Maghrib}</td>
                         </tr>
                         <tr>
                             <td style="border: 1px solid #ccc; padding: 8px;">Isha</td>
-                            <td style="border: 1px solid #ccc; padding: 8px;">${timings.Isha.toLocaleTimeString()}</td>
+                            <td style="border: 1px solid #ccc; padding: 8px;">${formattedTimes.Isha}</td>
                         </tr>
                     </table>
                 `;
