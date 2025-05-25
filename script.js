@@ -47,11 +47,17 @@ async function getPrayerTimes() {
         const lastThirdStart = new Date(fajr - thirdMs);
 
         const formattedTimes = formatPrayerTimesToAMPM(timings);
-
+	
+	const hijriDate = data.data.date.hijri;
+	const hijriDay = hijriDate.day;
+	const hijriMonth = hijriDate.month.en;
+	const hijriYear = hijriDate.year;
+	    
         output.innerHTML = `
         <div class="flex-wrapper">
             <div class="box">
-                <p><strong>My Location:</strong> ${locationName}</p>
+                <p><strong>Location: </strong>${locationName}</p>
+		<p><strong>Today: </strong>${hijriDay} ${hijriMonth} ${hijriYear} AH</p>
                 <p><strong>Last Third of Night Starts:</strong> ${lastThirdStart.toLocaleTimeString()}</p>
 				<p>
 					<div class="arabic-verse">
