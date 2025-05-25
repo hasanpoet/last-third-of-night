@@ -54,7 +54,7 @@ async function getPrayerTimes() {
 	const hijriYear = hijriDate.year;
 	    
         output.innerHTML = `
-	<p style="max-width: 100%; margin: 0 auto; text-align: center;">${locationName} | ${hijriDay} ${hijriMonth} ${hijriYear}</p>
+	<p style="font-size: clamp(14px, 4vw, 24px); text-align: center;">${locationName} | ${hijriDay} ${hijriMonth} ${hijriYear}</p>
         <div class="flex-wrapper">
             <div class="box">
                 <p><strong>Last Third of Night Starts:</strong> ${lastThirdStart.toLocaleTimeString()}</p>
