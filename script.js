@@ -54,10 +54,9 @@ async function getPrayerTimes() {
 	const hijriYear = hijriDate.year;
 	    
         output.innerHTML = `
+	<p style="width: 60%; margin: 0 auto; text-align: center;">${locationName} | ${hijriDay} ${hijriMonth} ${hijriYear}</p>
         <div class="flex-wrapper">
             <div class="box">
-                <p><strong>Location: </strong>${locationName}</p>
-		<p><strong>Today: </strong>${hijriDay} ${hijriMonth} ${hijriYear} AH</p>
                 <p><strong>Last Third of Night Starts:</strong> ${lastThirdStart.toLocaleTimeString()}</p>
 				<p>
 					<div class="arabic-verse">
@@ -66,7 +65,7 @@ async function getPrayerTimes() {
 				</p>
             </div>
             <div class="box">
-                <h3>My Daily Prayer Times</h3>
+                <p><strong>My Daily Prayer Times</strong></p>
                 <table>
                     <tr><th>Prayer</th><th>Time (Waqt Begins)</th></tr>
                     <tr><td>Fajr</td><td>${formattedTimes.Fajr}</td></tr>
